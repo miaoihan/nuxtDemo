@@ -43,6 +43,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL: 'https://www.easy-mock.com/mock/5ba126094442b90220354e85/example'
   },
 
   /*

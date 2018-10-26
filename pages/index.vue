@@ -1,33 +1,36 @@
 <template>
   <section class="container">
-    <div>
-      <logo/>
-      <h1 class="title">
-        nuxtDemo
-      </h1>
-      <h2 class="subtitle">
-        My great Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
+    <div class="list">
+      <div 
+        v-for="item of userList" 
+        :key="item.name">
+        {{ item.name }} {{ item.email }}
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
-  components: {
-    Logo
+  components: {},
+  computed: {
+    // userList() {
+    //   return this.$store.state.user.userList
+    // }
+    ...mapGetters({
+      userList: 'user/userList'
+    })
+  },
+  created() {
+    // this.$store.dispatch('user/getUserList')
+    this.getUserList()
+  },
+  methods: {
+    ...mapActions({
+      getUserList: 'user/getUserList'
+    })
   }
 }
 </script>
@@ -39,27 +42,5 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 </style>
