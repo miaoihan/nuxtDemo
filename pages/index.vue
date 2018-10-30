@@ -26,6 +26,8 @@ export default {
   created() {
     // this.$store.dispatch('user/getUserList')
     this.getUserList()
+    // 挂载全局变量
+    this.$log('test')
   },
   methods: {
     ...mapActions({
@@ -35,12 +37,18 @@ export default {
 }
 </script>
 
-<style>
+<style lang="stylus">
+@import '../assets/css/variable';
+
 .container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.list {
+  background: $themeColor;
 }
 </style>
